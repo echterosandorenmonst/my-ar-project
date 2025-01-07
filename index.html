@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AR.js with Google Drive Video</title>
+    <title>AR.js with GitHub Video</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
-        <!-- Marker -->
         <a-marker preset="custom" type="pattern" url="pattern-qr-code.patt">
             
-            <!-- Text (Above the QR Code) -->
+            <!-- Text -->
             <a-text id="text1" value="XCES" position="-0.5 0 1" rotation="-90 0 0" align="center" color="#000000" visible="false"></a-text>
             <a-text id="text2" value="x" position="0 0 1" rotation="-90 0 0" align="center" color="#000000" visible="false"></a-text>
             <a-text id="text3" value="Space" position="0.5 0 1" rotation="-90 0 0" align="center" color="#000000" visible="false"></a-text>
             <a-text id="text4" value="Cats" position="1 0 1" rotation="-90 0 0" align="center" color="#000000" visible="false"></a-text>
             
-            <!-- Image (Below the QR Code) -->
+            <!-- Image -->
             <a-image id="image" src="image.svg" position="0 0 -1" rotation="-90 0 0" width="1" height="1" visible="false"></a-image>
             
             <!-- Video -->
             <a-video 
                 id="video" 
-                src="https://drive.google.com/uc?id=1FJ5jIPOgfcG8DTbzvbPSsq09GIKv3OEG&export=download" 
+                src="video.mp4" 
                 position="0 0 0.01" 
                 rotation="-90 0 0" 
                 width="2" 
@@ -35,29 +34,55 @@
                 crossorigin="anonymous">
             </a-video>
 
-            <!-- Clickable Icons -->
-            <a-image id="icon1" src="icon1.png" position="-1.6 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
-            <a-image id="icon2" src="icon2.png" position="1.6 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
+            <!-- Icons -->
+            <a-image 
+                id="icon1" 
+                src="icon1.png" 
+                position="-1.6 0 0.05" 
+                rotation="-90 0 0" 
+                width="0.5" 
+                height="0.5" 
+                visible="false" 
+                href="https://xces.tech"
+                class="clickable">
+            </a-image>
+            <a-image 
+                id="icon2" 
+                src="icon2.png" 
+                position="1.6 0 0.05" 
+                rotation="-90 0 0" 
+                width="0.5" 
+                height="0.5" 
+                visible="false" 
+                href="https://xces.tech"
+                class="clickable">
+            </a-image>
         </a-marker>
 
-        <!-- AR camera -->
         <a-entity camera></a-entity>
     </a-scene>
 
     <script>
-        // Access entities
-        const image = document.querySelector('#image');
+        // Event Listeners for Clicks
+        document.querySelector('#icon1').addEventListener('click', () => {
+            window.open('https://xces.tech', '_blank');
+        });
+
+        document.querySelector('#icon2').addEventListener('click', () => {
+            window.open('https://xces.tech', '_blank');
+        });
+
+        // Timeline for Marker Events
         const text1 = document.querySelector('#text1');
         const text2 = document.querySelector('#text2');
         const text3 = document.querySelector('#text3');
         const text4 = document.querySelector('#text4');
+        const image = document.querySelector('#image');
         const video = document.querySelector('#video');
         const icon1 = document.querySelector('#icon1');
         const icon2 = document.querySelector('#icon2');
 
-        // Marker detected
         document.querySelector('a-marker').addEventListener('markerFound', () => {
-            // Timeline actions
             setTimeout(() => text1.setAttribute('visible', 'true'), 0);    // 0s: Text starts appearing
             setTimeout(() => text2.setAttribute('visible', 'true'), 1000); // 1s: "x" appears
             setTimeout(() => text3.setAttribute('visible', 'true'), 2000); // 2s: "Space" appears
@@ -69,10 +94,6 @@
                 icon2.setAttribute('visible', 'true');
             }, 20000); // 20s: Icons appear
         });
-
-        // Clickable icons
-        document.querySelector('#icon1').addEventListener('click', () => window.open('https://xces.tech', '_blank'));
-        document.querySelector('#icon2').addEventListener('click', () => window.open('https://xces.tech', '_blank'));
     </script>
 </body>
 </html>
