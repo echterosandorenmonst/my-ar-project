@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AR.js Adjusted Positioning</title>
+    <title>AR.js with Google Drive Video</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
 </head>
@@ -20,11 +20,24 @@
             <a-image id="image" src="image.svg" position="0 0 -1" rotation="-90 0 0" width="1" height="1" visible="false"></a-image>
             
             <!-- Video -->
-            <a-video id="video" src="video.mp4" position="0 0 0.01" rotation="-90 0 0" width="2" height="1" visible="false" autoplay="true" loop="true" muted="true" crossorigin="anonymous"></a-video>
+            <a-video 
+                id="video" 
+                src="https://drive.google.com/uc?id=1FJ5jIPOgfcG8DTbzvbPSsq09GIKv3OEG&export=download" 
+                position="0 0 0.01" 
+                rotation="-90 0 0" 
+                width="2" 
+                height="1" 
+                visible="false" 
+                autoplay="true" 
+                loop="true" 
+                muted="true" 
+                playsinline="true" 
+                crossorigin="anonymous">
+            </a-video>
 
             <!-- Clickable Icons -->
-            <a-image id="icon1" src="icon1.png" position="-1.2 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
-            <a-image id="icon2" src="icon2.png" position="1.2 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
+            <a-image id="icon1" src="icon1.png" position="-1.6 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
+            <a-image id="icon2" src="icon2.png" position="1.6 0 0.05" rotation="-90 0 0" width="0.5" height="0.5" visible="false" class="clickable"></a-image>
         </a-marker>
 
         <!-- AR camera -->
